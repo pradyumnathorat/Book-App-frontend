@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { isAuthenticated } from '../../helper/helper';
+import { Link, Navigate } from 'react-router-dom';
 
 import "./CardDetails.css";
 function CardDetails() {
     const { id } = useParams();
     const [card, setCard] = useState([]);
-    const [InstructionsB, setInstructionsB] = useState(true);
+    const [redirect, setredirect] = useState(false);
     const token = isAuthenticated();
     const url = process.env.REACT_APP_API;
     const getRescipe = () => {
@@ -23,6 +24,7 @@ function CardDetails() {
                     alert(data.error)
                 } else {
                     setCard(data.data);
+                    
                     console.log(data)
                 }
             })
@@ -40,8 +42,37 @@ function CardDetails() {
         return <div>Card not found.</div>;
     }
 
+    const handleDelete = async (_id) => {
+        try {
+            const deleteCard = await fetch(`${url}/delete`, {
+                method : 'delete',
+                headers: {
+                    'Content-Type': 'application/json',
+                    user_id: `${_id}`,
+                    authorization: `${token}`
+                }
+            })
+            const response = await deleteCard.json();
+            if ( response.error) {
+                alert(response.error)
+            } else {
+                alert(response.message);
+                setredirect(true)
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const performRedirect = () => {
+        if (redirect) {
+            return <Navigate to="/recipies" />
+        }
+    }
+
     return (
         <>
+        {performRedirect()}
             <div className="main-details">
                 <h1>
                     Books Record
@@ -96,10 +127,10 @@ function CardDetails() {
                         </div>
                         <p>{myCard.description}</p>
                     </div>
-                    
+
                 </div>
                 <div className='buttons-2'>
-                    <button className='delete'>Delete</button>
+                    <button className='delete' onClick={() => handleDelete(myCard._id)}>Delete</button>
                     <button className='edit'>Edit</button>
                 </div>
             </div>
