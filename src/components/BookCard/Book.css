@@ -31,10 +31,16 @@
     }
 } */
 
-.title {
-    text-decoration: none;
-    margin-right: 1rem;
+.title2 {
+    margin-left: 1rem;
+    color: blue;
+    font-weight: bold;
+    margin-top: 0.5rem;
+
 }
-.author {
+.author2 {
     margin-right: 1rem;
+    color : white;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
 }

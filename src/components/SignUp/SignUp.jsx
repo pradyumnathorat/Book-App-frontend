@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import "./signup.css";
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [Cpassword, setCPassword] = useState("");
     const [redirect, setredirect] = useState(false);
-    const [isCheck, setIsCheck] = useState(false);
+    const navigate = useNavigate();
+    
     const url = process.env.REACT_APP_API;
     const validateEmail = (email) => {
         {
@@ -33,7 +36,7 @@ const SignUp = () => {
     }
 
     const register = () => {
-        if (email && password && Cpassword && isCheck) {
+        if (email && password && Cpassword) {
             const isEmail = validateEmail(email);
             const isPassword = validatePassword(password);
             if (isEmail) {
@@ -77,16 +80,14 @@ const SignUp = () => {
         }
     }
 
-    const handleCheckboxChange = () => {
-        setIsCheck(!isCheck);
-    }
+    
     return (
         <>
             {performRedirect()}
-            <div className="login-container">
+            <div className="sign-container">
                 <div className="signIn">
 
-                    <h1>SignUp</h1>
+                    <h1>Register</h1>
 
 
                     <input className="login-input" type="text" placeholder='Email' onChange={(e) => { setEmail(e.target.value) }} value={email} />
@@ -97,14 +98,8 @@ const SignUp = () => {
 
                     <input className="login-input" type="text" placeholder='Repeat Password' onChange={(e) => { setCPassword(e.target.value) }} value={Cpassword} />
 
-
-                    <div className="checkbox">
-                        <input type="checkbox" checked={isCheck} onChange={handleCheckboxChange} />
-                        <p className="terms">I agree with Terms and Conditions</p>
-                    </div>
-
-                    <button className="sign-b" onClick={register}>SignUp</button>
-
+                    <button className="sign-b" onClick={register}>Register</button>
+                    <div className="Member" onClick={() =>navigate("/") }>Member Login</div>
                 </div>
             </div>
         </>

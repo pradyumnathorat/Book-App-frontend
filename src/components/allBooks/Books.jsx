@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { getUserEmail } from '../helper'
 import Recipe from '../BookCard/Book';
 import "./books.css";
+import { useNavigate } from 'react-router-dom';
 
 import { Link, Navigate } from 'react-router-dom';
 import { isAuthenticated } from '../../helper/helper';
@@ -13,6 +14,8 @@ const Recipies = () => {
     const [query, setQuery] = useState("");
     const url = process.env.REACT_APP_API;
     const token = isAuthenticated();
+    const navigate = useNavigate();
+
     // console.log(user)
     // console.log(recipes);
     const getRescipe = () => {
@@ -67,7 +70,15 @@ const Recipies = () => {
             return <Navigate to="/recipies" />
         }
     }
+    const handleClick2 = (_id) => {
+        navigate(`/cards/${_id}`)
+    }
 
+    const handlelogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate("/")
+    }
     return (
         <>
             {performRedirect()}
@@ -76,18 +87,21 @@ const Recipies = () => {
 
             <div className="newConatainer">
                 <h1>Book List</h1>
-                <div className="new" onClick={handleClick}>+Add new Book</div>
+                <div className='logout_main1'>
+                    <div className="new" onClick={handleClick}>+Add new Book</div>
+                    <button className="logout_b" onClick={handlelogout}>Logout</button>
+                </div>
             </div>
             <div className="allRecipies">
             </div>
             <div className="allCards">
                 {
                     !query ?
-                    books.map((book, index) => (
-                            <Link to={`/cards/${book._id}`}><Recipe book={book} /></Link>
+                        books.map((book, index) => (
+                            <div onClick={() => { handleClick2(book._id) }} ><Recipe book={book} /></div>
                         )) :
                         filteredItems.map((book, index) => (
-                            <Link to={`/cards/${book._id}`}><Recipe book={book} /></Link>
+                            <div onClick={() => { handleClick2(book._id) }}><Recipe book={book} /></div>
                         ))
                 }
             </div>

@@ -90,7 +90,7 @@ function CardDetails() {
                             <p>1</p>
                             <p>Title</p>
                         </div>
-                        <p>{myCard.title}</p>
+                        <p className='value_1'>{myCard.title}</p>
                     </div>
                     <div className='row'>
 
@@ -98,7 +98,7 @@ function CardDetails() {
                             <p>2</p>
                             <p>Author</p>
                         </div>
-                        <p>{myCard.author}</p>
+                        <p className='value_1'>{myCard.author}</p>
                     </div>
                     <div className='row'>
 
@@ -106,7 +106,7 @@ function CardDetails() {
                             <p>3</p>
                             <p>ISBN</p>
                         </div>
-                        <p>{myCard.ISBN}</p>
+                        <p className='value_1'>{myCard.ISBN}</p>
                     </div>
                     <div className='row'>
 
@@ -114,7 +114,7 @@ function CardDetails() {
                             <p>4</p>
                             <p>Publisher</p>
                         </div>
-                        <p>{myCard.publisher}</p>
+                        <p className='value_1'>{myCard.publisher}</p>
                     </div>
                     <div className='row'>
 
@@ -122,7 +122,7 @@ function CardDetails() {
                             <p>5</p>
                             <p>Published_date</p>
                         </div>
-                        <p>{myCard.date}</p>
+                        <p className='value_1'>{myCard.date}</p>
                     </div>
                     <div className='row'>
 
@@ -130,7 +130,7 @@ function CardDetails() {
                             <p>6</p>
                             <p>Description</p>
                         </div>
-                        <p>{myCard.description}</p>
+                        <p className='value_1'>{myCard.description}</p>
                     </div>
 
                 </div>
