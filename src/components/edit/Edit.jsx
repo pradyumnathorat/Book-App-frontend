@@ -28,7 +28,7 @@ const Edit = () => {
         }
         try {
             const response = await fetch(`${urlE}/edit`, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': "application/json",
                     authorization: `${token}`,
@@ -57,6 +57,12 @@ const Edit = () => {
             })
             const book = await response.json();
             setBook(book)
+            setTitle(book.data.title)
+            setautor(book.data.author)
+            setISBN(book.data.ISBN)
+            setdirections(book.data.description)
+            setDate(book.data.date)
+            setPublisher(book.data.publisher)
         } catch (e) {
             console.log(e);
         }
