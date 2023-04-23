@@ -67,7 +67,7 @@ function CardDetails() {
 
     const performRedirect = () => {
         if (redirect) {
-            return <Navigate to="/recipies" />
+            return <Navigate to="/books" />
         }
     }
 

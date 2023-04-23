@@ -38,7 +38,7 @@ const Edit = () => {
             });
             const data = await response.json();
             alert(data.message)
-            navigate("/recipies");
+            navigate("/books");
         } catch (e) {
             alert(e.message)
         }

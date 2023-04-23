@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<SignUp/>}/>
           <Route path="/" element={<Login/>}/>
-          <Route path="/recipies" element={<PrivateRoute Child={Recipies}/>}/>
+          <Route path="/books" element={<PrivateRoute Child={Recipies}/>}/>
           <Route path="/recipie" element={<Recipe/>}/>
           <Route path="/upload" element={<CreateRecipe/>}/>
           <Route path="/cards/:id" element={<CardDetails/>} />

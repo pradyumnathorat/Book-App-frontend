@@ -34,7 +34,7 @@ const Login = () => {
     }
     const performRedirect = () => {
         if (redirect) {
-            return <Navigate to="/recipies" />
+            return <Navigate to="/books" />
         }
     }
 
