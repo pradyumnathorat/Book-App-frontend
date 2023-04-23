@@ -1,0 +1,52 @@
+.allCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px;
+    gap: 20px;
+}
+
+.allRecipies {
+    font-weight: bold;
+    color:gray;
+    margin-left: 20px;
+    font-size:20px
+}
+
+.newConatainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new {
+    width: 140px;
+    height: 40px;
+    background-color: rgb(181, 153, 31);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media screen and (max-width:767px){
+    .allCards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+        gap: 20px;
+    }
+}
+
+body {
+    background-color: #1c193d;
+    color : white;
+}
+
+
