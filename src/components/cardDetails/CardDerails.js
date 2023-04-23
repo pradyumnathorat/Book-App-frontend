@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { isAuthenticated } from '../../helper/helper';
 import { Link, Navigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import "./CardDetails.css";
 function CardDetails() {
     const { id } = useParams();
     const [card, setCard] = useState([]);
     const [redirect, setredirect] = useState(false);
     const token = isAuthenticated();
+    const navigate = useNavigate();
     const url = process.env.REACT_APP_API;
     const getRescipe = () => {
         fetch(`${url}/upload`, {
@@ -68,6 +69,10 @@ function CardDetails() {
         if (redirect) {
             return <Navigate to="/recipies" />
         }
+    }
+
+    const handleEdit = (_id ) => {
+        navigate(`/edit/${_id}`)
     }
 
     return (
@@ -131,7 +136,7 @@ function CardDetails() {
                 </div>
                 <div className='buttons-2'>
                     <button className='delete' onClick={() => handleDelete(myCard._id)}>Delete</button>
-                    <button className='edit'>Edit</button>
+                    <button className='edit' onClick={() =>  handleEdit(myCard._id) } >Edit</button>
                 </div>
             </div>
 

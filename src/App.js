@@ -8,6 +8,7 @@ import Recipe from './components/BookCard/Book';
 import CreateRecipe from './components/CeateBook/createBook';
 import PrivateRoute from './components/auth/PrivateRoute';
 import CardDetails from './components/cardDetails/CardDerails';
+import Edit from './components/edit/Edit';
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/recipie" element={<Recipe/>}/>
           <Route path="/upload" element={<CreateRecipe/>}/>
           <Route path="/cards/:id" element={<CardDetails/>} />
+          <Route path="/edit/:_id" element={<PrivateRoute Child={Edit}/>}/>
         </Routes>
       </BrowserRouter>
     </>
